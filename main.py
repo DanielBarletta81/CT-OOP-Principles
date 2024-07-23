@@ -10,9 +10,35 @@
 
 # Expected Outcome: A `BudgetCategory` class capable of storing category details securely.
 
+# Task 2: Implement Getters and Setters -
+#  Write getter and setter methods for both the category name and the allocated budget.
+#  - Ensure that the setter methods include validation (e.g., budget should be a positive number).
+
+# Expected Outcome: Methods that allow controlled access and 
+# modification of the private attributes, with validation checks in place.
+
+#class BudgetCategory:
+    # Constructor and private attributes
+    # ...
+
+    # Getters and setters for category name and budget
+    # ...
+
+ #   def add_expense(self, amount):
+        # Method to add an expense to the category
+        # ...
+
+ #   def display_category_summary(self):
+        # Method to display the budget category details
+        # ...
+
+#food_category = BudgetCategory("Food", 500)
+#food_category.add_expense(100)
+#food_category.display_category_summary()
+
 class BudgetCategory:
   
-    def __init__(self, budget_amt, category ):
+    def __init__(self, category, budget_amt):
         self.__budget_amt = budget_amt
         self.__category = category
     
@@ -28,31 +54,81 @@ class BudgetCategory:
     def set_budget_amt(self, new_budget_amt):
         self.__budget_amt = new_budget_amt
 
-def add_category(category):
+#Task 3: Add Budget Functionality Implement a method to add expenses to a category and adjust
+#  the budget accordingly.
+#  Validate the expense amount before making deductions from the budget.
+
+#Expected Outcome: Ability to track expenses per category and update the remaining budget safely.
+
+
+
+    def show_category_summary(self):
        
-    new_category = input("What category would you like to add? ")
-    new_budget_amt = float(input(f"How much will you allocate to {new_category}?"))
-    category[new_category] = BudgetCategory(new_category, new_budget_amt)
-    print(new_category, new_budget_amt)
+       print(f'Budget Category: {self.get_category()}\n Balance: {self.get_budget_amt()}')
+       
+    
+    def incur_expense(self,amount):
+       if amount > 0:
+           self.set_budget_amt(self.get_budget_amt() - amount)
+           print(f'Budget {self.__category} decreased by {amount}.')
+       else:
+           print("Error.")
+       
+       
 
 
-def add_transaction(category):
-        select_budget = input('Which Budget would you like to modify? ')
-        if select_budget in category:
-            type_transaction = input("Are you adding or subtracting from this budget(add/subtract)?")
-        
-            if type_transaction == 'add':
-                new_budget_amt = float(input("Please enter the amount. "))
+    def add_to_budget(self,amount):
+       if amount > 0:
+           self.set_budget_amt(self.get_budget_amt() + amount)
+           print(f'Budget {self.__category} increased by {amount}.')
+       else:
+           print("Error.")
+            
+   
 
-                category[new_budget_amt] = new_budget_amt
+budget = BudgetCategory("Entertainment", 1000)
+print(f'Category: {budget.get_category()}')
+print(f'Budgeted Amount: {budget.get_budget_amt()}')
 
-            elif type_transaction == 'subtract':
-                print("Subtract")
-            else:
-                print("Please enter a valid choice (add/subtract)")
-        
 
-def main():
+
+food_budget = BudgetCategory("Food", 1200)
+print(f'Category: {food_budget.get_category()}')
+print(f'Budgeted Amount: {food_budget.get_budget_amt()}')
+
+travel_budget = BudgetCategory("Travel", 3500)
+
+travel_budget.incur_expense(2500)
+
+travel_budget.show_category_summary()
+
+
+food_budget.show_category_summary()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" def main():
     category = {}
 
     while True:
@@ -79,4 +155,4 @@ def main():
         except:
           print('An exception occurred')    
 
-main()
+main() """
