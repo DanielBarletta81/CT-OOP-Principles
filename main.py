@@ -8,40 +8,14 @@
 # with private attributes for category name and allocated budget. 
 # - Initialize these attributes in the constructor.
 
-# Expected Outcome: A `BudgetCategory` class capable of storing category details securely.
-
-# Task 2: Implement Getters and Setters -
-#  Write getter and setter methods for both the category name and the allocated budget.
-#  - Ensure that the setter methods include validation (e.g., budget should be a positive number).
-
-# Expected Outcome: Methods that allow controlled access and 
-# modification of the private attributes, with validation checks in place.
-
-#class BudgetCategory:
-    # Constructor and private attributes
-    # ...
-
-    # Getters and setters for category name and budget
-    # ...
-
- #   def add_expense(self, amount):
-        # Method to add an expense to the category
-        # ...
-
- #   def display_category_summary(self):
-        # Method to display the budget category details
-        # ...
-
-#food_category = BudgetCategory("Food", 500)
-#food_category.add_expense(100)
-#food_category.display_category_summary()
 
 class BudgetCategory:
   
     def __init__(self, category, budget_amt):
+        #make private attributes for category and budget amount
         self.__budget_amt = budget_amt
         self.__category = category
-    
+    # getters and setters
     def get_category(self):
         return self.__category
 
@@ -61,12 +35,14 @@ class BudgetCategory:
 #Expected Outcome: Ability to track expenses per category and update the remaining budget safely.
 
 
+# method to display category details
 
     def show_category_summary(self):
        
        print(f'Budget Category: {self.get_category()}\n Balance: {self.get_budget_amt()}')
        
-    
+  # method to calculate expenses
+  #   
     def incur_expense(self,amount):
        if amount > 0:
            self.set_budget_amt(self.get_budget_amt() - amount)
@@ -76,7 +52,7 @@ class BudgetCategory:
        
        
 
-
+# method to add money to budget
     def add_to_budget(self,amount):
        if amount > 0:
            self.set_budget_amt(self.get_budget_amt() + amount)
@@ -84,7 +60,7 @@ class BudgetCategory:
        else:
            print("Error.")
             
-   
+   # create instances of Class BudgetCategory
 
 budget = BudgetCategory("Entertainment", 1000)
 print(f'Category: {budget.get_category()}')
@@ -104,55 +80,3 @@ travel_budget.show_category_summary()
 
 
 food_budget.show_category_summary()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-""" def main():
-    category = {}
-
-    while True:
-
-        print("\nMenu: \n1. View Budgets \n2. Add Expense Category \n3. Update Budget \n4. Exit")
-        choice = input("Please make a choice: ") 
-
-        try:
-          
-          if choice == '1':
-              pass
-          elif choice == '2':
-              #create new category
-              add_category(category)
-          elif choice == '3':
-              #update budget
-              add_transaction(category)
-          elif choice == '4':
-              # exit
-              break
-          else:
-              print("Invalid selection.") 
-
-        except:
-          print('An exception occurred')    
-
-main() """
